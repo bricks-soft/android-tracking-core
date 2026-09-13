@@ -1,0 +1,13 @@
+{
+  "name": "@bricks-soft/android-tracking-core",
+  "version": "0.1.0",
+  "description": "Shared Android library for Capacitor plugins: durable HTTP upload queue and location providers (Google fused / Huawei fused / platform LocationManager).",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "git+https://github.com/bricks-soft/android-tracking-core.git" },
+  "files": ["android/src/main/", "android/build.gradle", "android/consumer-rules.pro", "android/settings.gradle", "README.md"],
+  "scripts": {
+    "verify": "npm run verify:android",
+    "verify:android": "cd android && ./gradlew clean build test && cd .."
+  },
+  "keywords": ["android", "location", "hms", "gms", "queue", "capacitor"]
+}

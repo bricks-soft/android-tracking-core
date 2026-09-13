@@ -1,0 +1,4 @@
+// Standalone build only. Consumers include this module from their own settings.gradle:
+//   include ':bricks-soft-android-tracking-core'
+//   project(':bricks-soft-android-tracking-core').projectDir = new File('../node_modules/@bricks-soft/android-tracking-core/android')
+rootProject.name = 'android-tracking-core'

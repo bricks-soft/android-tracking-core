@@ -1,0 +1,40 @@
+# Stages the package on the npm registry when a GitHub release is created.
+# Authentication uses npm trusted publishing (OpenID Connect), configured on
+# npmjs.com against this repository and this workflow file name. There is no
+# npm token: the `id-token: write` permission below lets the runner exchange a
+# short-lived OIDC token with the registry, and npm attaches a provenance
+# statement automatically.
+#
+# That trusted publisher grants `npm stage publish` only, so this job does not
+# make the version installable. It uploads the tarball to the Staged Packages
+# tab, where a maintainer runs `npm stage approve <stage-id>` (or clicks
+# Approve) with 2FA to publish it.
+# https://docs.npmjs.com/trusted-publishers
+# https://docs.npmjs.com/staged-publishing
+
+name: npm package
+
+on:
+  release:
+    types: [ created ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org/
+      # Trusted publishing needs npm 11.5.1 or newer; `npm stage` needs npm 11.
+      - run: npm install -g npm@latest
+      - run: npm ci
+      # Parity with `npm publish`: this runs the prepublishOnly script, so the
+      # staged tarball contains a freshly built dist/.
+      - run: npm stage publish
