@@ -52,6 +52,7 @@ repositories {
 dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test:runner:1.7.0" // instrumentation runner for device skeletons
 
     // shared
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
