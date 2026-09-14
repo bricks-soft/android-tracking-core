@@ -16,7 +16,7 @@ import org.robolectric.annotation.Config
 import java.util.concurrent.TimeUnit
 
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [23, 28], manifest = Config.NONE)
+@Config(sdk = [24, 28], manifest = Config.NONE)
 class QueueWorkerTest : QueueTestSupport() {
     @Test fun workerBootstrapsPersistedDefinitionsWithoutHostSingleton() = runTest {
         MockWebServer().use { server ->

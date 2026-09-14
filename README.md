@@ -87,7 +87,7 @@ Dependency and API evidence, retrieved **2026-09-14** (pins are verified artifac
 JVM verification uses Robolectric SQLite, MockWebServer and coroutine tests. Hardware Keystore persistence, real process death, reboot/connectivity scheduling, R8 reconstruction and the final combined HMS host need device/release qualification. No emulator is installed on this machine.
 
 
-Verified locally on 2026-09-14: **35 httpqueue tests per variant, 64 total tests per variant, zero failures** in debug and release. Worker bootstrap ran on Robolectric API 23 and 28. Both AARs assembled, and `httpqueue` has zero lint findings. The aggregate lint report still has an unrelated location-package API-level error; the scaffold sets `abortOnError=false`.
+Verified locally on 2026-09-14: **35 httpqueue tests per variant, 64 total tests per variant, zero failures** in debug and release. Worker bootstrap ran on Robolectric API 24 and 28. Both AARs assembled, and `httpqueue` has zero lint findings. The aggregate lint report still has an unrelated location-package API-level error; the scaffold sets `abortOnError=false`.
 
 Reproduce the full verification from the repository root (temporary caches avoid read-only home directories in the worker sandbox):
 
