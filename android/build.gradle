@@ -50,7 +50,21 @@ repositories {
 }
 
 dependencies {
-    // Workers: append dependencies below inside your own marked block; do not reorder existing lines.
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+
+    // shared
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.10.2'
+    testImplementation 'org.robolectric:robolectric:4.16'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2'
+
+    // httpqueue
+    implementation 'com.squareup.okhttp3:okhttp:5.2.1'
+    implementation 'androidx.work:work-runtime:2.10.1'
+    testImplementation 'com.squareup.okhttp3:mockwebserver3:5.2.1'
+    testImplementation 'androidx.work:work-testing:2.10.1'
+
+    // location
+    implementation "com.google.android.gms:play-services-location:$playServicesLocationVersion"
+    implementation "com.huawei.hms:location:$hmsLocationVersion"
 }
