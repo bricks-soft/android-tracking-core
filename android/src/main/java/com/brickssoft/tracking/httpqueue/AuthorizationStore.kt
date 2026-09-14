@@ -27,7 +27,7 @@ interface CredentialCipher {
     fun decrypt(scopeKey: String, ciphertext: ByteArray): ByteArray
 }
 
-/** Android Keystore AES/GCM; queue file lives under noBackupFilesDir. See dated sources in README. */
+/** Stores credentials with Android Keystore AES/GCM; queue files live under noBackupFilesDir. */
 class KeystoreCredentialCipher : CredentialCipher {
     override fun encrypt(scopeKey: String, plaintext: ByteArray): ByteArray {
         val cipher = Cipher.getInstance("AES/GCM/NoPadding")

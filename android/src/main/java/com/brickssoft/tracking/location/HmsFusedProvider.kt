@@ -24,7 +24,7 @@ internal fun buildHmsRequest(request: LocationRequest): HmsRequest = HmsRequest(
     })
 }
 
-// Signatures verified against live reference via Jina and location/core AARs, 2026-09-14:
+// Huawei fused-location request and callback contracts:
 // https://developer.huawei.com/consumer/en/doc/HMSCore-References/fusedlocationproviderclient-0000001050746169
 // https://developer.huawei.com/consumer/en/doc/HMSCore-References/locationrequest-0000001050986189
 private class HmsBackend(private val context: Context, private val looper: Looper) : ProviderBackend {

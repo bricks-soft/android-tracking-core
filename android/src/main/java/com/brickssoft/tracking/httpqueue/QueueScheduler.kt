@@ -37,7 +37,7 @@ class QueueScheduler(context: Context, private val databaseName: String) {
         val builder = OneTimeWorkRequestBuilder<QueueWorker>().setInputData(input).setConstraints(constraints)
             .setBackoffCriteria(BackoffPolicy.EXPONENTIAL, 10, TimeUnit.SECONDS)
         // Android <31 expedited work uses an FGS notification. This queue intentionally owns no FGS.
-        // Source retrieved 2026-09-14: https://developer.android.com/develop/background-work/background-tasks/persistent/getting-started/define-work
+        // https://developer.android.com/develop/background-work/background-tasks/persistent/getting-started/define-work
         if (Build.VERSION.SDK_INT >= 31) builder.setExpedited(OutOfQuotaPolicy.RUN_AS_NON_EXPEDITED_WORK_REQUEST)
         workManager.enqueueUniqueWork("$uniqueName:immediate", ExistingWorkPolicy.KEEP, builder.build()).result.get()
     }

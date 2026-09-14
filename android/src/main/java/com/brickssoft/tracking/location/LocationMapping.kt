@@ -4,7 +4,6 @@ import android.location.Location
 import android.os.Build
 import com.huawei.hms.location.FusedLocationProviderClient as HmsFusedClient
 
-// Verified 2026-09-14 against Android Location reference and HMS fused reference/artifact (README).
 // Missing optional measurements are null. Neither zero altitude nor zero speed means "missing".
 @Suppress("DEPRECATION")
 internal fun Location.toFix(kind: ProviderKind): LocationFix = LocationFix(

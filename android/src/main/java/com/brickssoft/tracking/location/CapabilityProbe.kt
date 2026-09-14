@@ -11,10 +11,7 @@ import com.google.android.gms.common.GoogleApiAvailability
 import com.huawei.hms.api.HuaweiApiAvailability
 import com.huawei.hms.location.LocationServices as HmsLocationServices
 
-/** Snapshot only; call again on startup, retry and service-package/permission/settings changes.
- * Sources retrieved 2026-09-14: GoogleApiAvailability and HuaweiApiAvailability references,
- * Android LocationManager/AlarmManager/PowerManager/permission references, listed in README.
- */
+/** Reads a capability snapshot; call again on startup, retry, and service, permission, or settings changes. */
 class CapabilityProbe(
     context: Context,
     private val gmsAvailability: (Context) -> Int = {
@@ -76,9 +73,9 @@ class CapabilityProbe(
         context.checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED
 
     companion object {
-        // HMS APK 6.3.0.301 minimum for APK-dependent operation; latest fused SDK can work without APK.
+        // HMS APK 6.3.0.301 is the minimum for APK-dependent operation; fused initialization can work without it.
         // https://developer.huawei.com/consumer/en/doc/HMSCore-Guides/version-change-history-0000001050986155
-        // Retrieved 2026-09-14. Initialization success is provisional; await actual registration.
+        // Initialization success is provisional; await actual registration.
         const val MIN_HMS_APK_VERSION: Int = 60300301
     }
 }

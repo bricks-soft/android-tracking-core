@@ -23,7 +23,6 @@ internal fun buildPlatformRequest(request: LocationRequest, snapshot: Capability
         if (snapshot.networkEnabled) add(LocationManager.NETWORK_PROVIDER)
     }, request.effectiveMinUpdateIntervalMs, 0f)
 
-// Android LocationManager/LocationListener reference + SDK 36 android.jar, retrieved 2026-09-14 (README).
 internal class PlatformBackend(
     private val manager: LocationManager,
     private val looper: Looper,

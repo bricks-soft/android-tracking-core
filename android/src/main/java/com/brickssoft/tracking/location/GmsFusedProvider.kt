@@ -29,7 +29,6 @@ internal fun buildGmsRequest(request: LocationRequest): GmsRequest =
         .setMaxUpdateDelayMillis(0)
         .build()
 
-// API signatures verified 2026-09-14: play-services-location 21.3.0 AAR and Google references (README).
 private class GmsBackend(private val context: Context, private val looper: Looper) : ProviderBackend {
     @SuppressLint("MissingPermission")
     override fun create(request: LocationRequest, events: BackendEvents): Registration {
