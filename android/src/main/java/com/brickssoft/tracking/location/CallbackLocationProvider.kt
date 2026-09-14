@@ -143,6 +143,10 @@ internal class CallbackSubscription(
 
     override fun locations(locations: List<Location>) = synchronized(lock) {
         if (!active) return@synchronized
+        // Huawei documents no ordering guarantee between registration success and the first result,
+        // and on devices without AG Connect configuration the success callback can lag or never fire.
+        // A delivered location proves the subscription is live, so treat it as readiness.
+        if (!registrationFinished) { registrationFinished = true; ready.complete(Unit) }
         try {
             locations.sortedBy { it.elapsedRealtimeNanos }.forEach {
                 if (active) sink.onLocation(generation, it.toFix(kind))
